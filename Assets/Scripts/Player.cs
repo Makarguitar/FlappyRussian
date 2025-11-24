@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float speed = 5f, speedRotation = 30f;
+    [SerializeField] float speed = 5f, speedRotation = 30f, maxTurn = 20f;
     float zRotation;
     GameManager gm;
 
@@ -21,13 +21,22 @@ public class Player : MonoBehaviour
     {
         if (gameObject.transform.position.y > gm.BottomLeft.y)
             gameObject.transform.Translate(0, -speed * Time.deltaTime, 0, Space.World);
+        if (zRotation > -maxTurn)
+        {
+            zRotation -= speedRotation * Time.deltaTime;
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, zRotation);
+        }
     }
 
     private void MoveUp()
     {
         if (gameObject.transform.position.y < gm.TopRight.y)
             gameObject.transform.Translate(0, speed * Time.deltaTime, 0, Space.World);
-        zRotation += speedRotation * Time.deltaTime;
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, zRotation);
+        if (zRotation < maxTurn) 
+        {
+            zRotation += speedRotation * Time.deltaTime;
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, zRotation);
+        } 
+        
     }
 }
