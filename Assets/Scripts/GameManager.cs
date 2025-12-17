@@ -1,9 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public Vector2 BottomLeft { get; private set; }
     public Vector2 TopRight { get; private set; }
+    [SerializeField] private TextMeshProUGUI timerText;
+    private float time;
 
     void Start()
     {
@@ -13,7 +16,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        time += Time.deltaTime;
+        timerText.text = $"Time : {time}";
     }
 
     private Vector3 LocalVectorToWorld(float x, float y)
