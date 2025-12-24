@@ -43,4 +43,12 @@ public class Player : MonoBehaviour
             gameObject.transform.rotation = Quaternion.Euler(0, 0, zRotation);
         } 
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Vodka"))
+        {
+            print("u lost");
+        }
+    }
 }
