@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Vodka"))
         {
             print("u lost");
+            gm.StopGameplay();
         }
     }
 }
