@@ -280,7 +280,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 203937074}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1556585691}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &203937074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1765,6 +1777,7 @@ MonoBehaviour:
   coloumnsPrefab: {fileID: 2320630212941718308, guid: 64696c5e208706d408d3d2d89a35021d, type: 3}
   coloumnSpawnTime: 1.5
   gameOverPanel: {fileID: 104817096}
+  timeAvoidingVodka: {fileID: 2085947143}
 --- !u!4 &1556585692
 Transform:
   m_ObjectHideFlags: 0

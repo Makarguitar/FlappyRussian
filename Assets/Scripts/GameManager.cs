@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject coloumnsPrefab;
     [SerializeField] private float coloumnSpawnTime;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI timeAvoidingVodka;
 
     void Start()
     {
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
     
     public void StopGameplay()
     {
+        timeAvoidingVodka.text = $"Your Time Avoiding Vodka : {(int)time}";
+        print(time);
         Time.timeScale = 0;
         gameOverPanel.SetActive(true);
     }
