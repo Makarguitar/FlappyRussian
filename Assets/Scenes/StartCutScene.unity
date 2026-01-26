@@ -157,7 +157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: asdg
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -290,9 +290,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutSceneManager
   cutSceneText: {fileID: 548438079}
   dialogueLines:
-  - a
-  - b
-  - c
+  - You are a lonely Alkash that is trying to stop drinking...
+  - you are coming back from a grocery store but its already 11pm!
+  - you have to try avoid all of the night clubs, because if you will enter them...
+  - you are not coming back...
+  letterDelay: 0.05
+  lineDelay: 1
 --- !u!114 &637381810
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
     public void StopGameplay()
     {
         timeAvoidingVodka.text = $"Your Time Avoiding Vodka : {(int)time}";
-        print(time);
         Time.timeScale = 0;
         gameOverPanel.SetActive(true);
     }
