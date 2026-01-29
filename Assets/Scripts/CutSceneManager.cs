@@ -15,8 +15,8 @@ public class CutSceneManager : MonoBehaviour
     };
 
     public float letterDelay = 0.05f;
-    public float lineDelay = 1f;
-    
+    public float lineDelay = 2f;
+
     void Start()
     {
         StartCoroutine(ShowText());
@@ -24,7 +24,6 @@ public class CutSceneManager : MonoBehaviour
 
     void Update()
     {
-        
     }
 
     IEnumerator ShowText()
@@ -32,12 +31,51 @@ public class CutSceneManager : MonoBehaviour
         for (int i = 0; i < dialogueLines.Length; i++)
         {
             cutSceneText.text = "";
-            string firstLine = dialogueLines[i];
+            string currentLine = dialogueLines[i];
 
-            foreach (char letter in firstLine)
+            foreach (char letter in currentLine)
             {
                 cutSceneText.text += letter;
-                yield return new WaitForSeconds(0.05f);
+                if (currentLine == dialogueLines[3])
+                {
+                    yield return new WaitForSeconds(0.20f);
+                }
+                else
+                {
+                    yield return new WaitForSeconds(letterDelay);
+                }
+            }
+
+            if (currentLine == dialogueLines[3])
+            {
+                yield return new WaitForSeconds(5f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(lineDelay);
+            }
+
+
+            if (currentLine == dialogueLines[3])
+            {
+                cutSceneText.text = "";
+            }
+            else
+            {
+                for (int j = currentLine.Length; j >= 0; j--)
+                {
+                    cutSceneText.text = currentLine.Substring(0, j);
+                    yield return new WaitForSeconds(0.02f);
+                }
+            }
+
+            if (currentLine == dialogueLines[2])
+            {
+                yield return new WaitForSeconds(5f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(lineDelay);
             }
         }
     }
