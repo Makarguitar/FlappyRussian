@@ -1,10 +1,18 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutSceneManager : MonoBehaviour
 {
     public TextMeshProUGUI cutSceneText;
+    public Image blackBg;
+    public Image skyBg;
+    public float fadeDuration = 2f;
+    public Animator alkashAnimator;
+    public GameObject mapFront;
+    public GameObject mapBack;
+    public GameObject street;
 
     public string[] dialogueLines =
     {
@@ -77,6 +85,44 @@ public class CutSceneManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(lineDelay);
             }
+        }
+
+        float time = 0f;
+        while (time < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, time / fadeDuration);
+            blackBg.color = new Color(0, 0, 0, alpha);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        
+        blackBg.gameObject.SetActive(false);
+        alkashAnimator.SetTrigger("Start");
+        yield return new WaitForSeconds(4f);
+        mapBack.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        mapBack.SetActive(false);
+        alkashAnimator.gameObject.SetActive(false);
+        mapFront.SetActive(true);
+        yield return new WaitForSeconds(10f);
+        mapFront.SetActive(false);
+        alkashAnimator.gameObject.SetActive(true);
+        mapBack.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        mapBack.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        alkashAnimator.gameObject.SetActive(false);
+        street.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        
+        blackBg.gameObject.SetActive(true);
+        time = 0f;
+        while (time < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, time / fadeDuration);
+            blackBg.color = new Color(0, 0, 0, alpha);
+            time += Time.deltaTime;
+            yield return null;
         }
     }
 }
