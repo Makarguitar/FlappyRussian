@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class StartMenuManager : MonoBehaviour
 {
+    public GameObject controlsPanel;
+    public bool controlPanelOn = false;
     
     void Start()
     {
@@ -11,7 +13,14 @@ public class StartMenuManager : MonoBehaviour
     
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            if (controlPanelOn)
+            {
+                controlsPanel.SetActive(false);
+                controlPanelOn = false;
+            }
+        }
     }
 
     public void NextLevel()
@@ -25,5 +34,11 @@ public class StartMenuManager : MonoBehaviour
     {
         print("mamosinto");
         Application.Quit();
+    }
+
+    public void ShowControls()
+    {
+        controlsPanel.SetActive(true);
+        controlPanelOn = true;
     }
 }

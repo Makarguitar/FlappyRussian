@@ -56,7 +56,9 @@ public class CutSceneManager : MonoBehaviour
 
             if (currentLine == dialogueLines[3])
             {
-                yield return new WaitForSeconds(5f);
+                yield return new WaitForSeconds(2f);
+                cutSceneText.CrossFadeColor(Color.darkRed, 3f, true, true);
+                yield return new WaitForSeconds(3f);
             }
             else
             {

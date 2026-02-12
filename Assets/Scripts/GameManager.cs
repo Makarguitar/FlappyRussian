@@ -54,5 +54,10 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void BacktoMenu()
+    {
+        SceneManager.LoadScene(1);
+    }
     
 }
