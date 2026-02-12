@@ -124,5 +124,8 @@ public class CutSceneManager : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+
+        int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }
