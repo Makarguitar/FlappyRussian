@@ -13,6 +13,8 @@ public class CutSceneManager : MonoBehaviour
     public GameObject mapFront;
     public GameObject mapBack;
     public GameObject street;
+    public AudioSource audioSource;
+    public AudioSource alkashAudioSource;
 
     public string[] dialogueLines =
     {
@@ -27,6 +29,8 @@ public class CutSceneManager : MonoBehaviour
 
     void Start()
     {
+        audioSource = cutSceneText.GetComponent<AudioSource>();
+        alkashAudioSource = alkashAnimator.gameObject.GetComponent<AudioSource>();
         StartCoroutine(ShowText());
     }
 
@@ -58,7 +62,9 @@ public class CutSceneManager : MonoBehaviour
             {
                 yield return new WaitForSeconds(2f);
                 cutSceneText.CrossFadeColor(Color.darkRed, 3f, true, true);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(1.5f);
+                StartSound();
+                yield return new WaitForSeconds(1.5f);
             }
             else
             {
@@ -99,7 +105,8 @@ public class CutSceneManager : MonoBehaviour
         }
         
         blackBg.gameObject.SetActive(false);
-        alkashAnimator.SetTrigger("Start");
+        alkashAnimator.SetTrigger("Start"); 
+        alkashAudioSource.Play();
         yield return new WaitForSeconds(4f);
         mapBack.SetActive(true);
         yield return new WaitForSeconds(2f);
@@ -129,5 +136,10 @@ public class CutSceneManager : MonoBehaviour
 
         int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
         UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+    private void StartSound()
+    {
+        audioSource.Play();
     }
 }
